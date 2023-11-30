@@ -9,7 +9,10 @@ app.use(express.urlencoded({ extended: false }))
 app.use(
   session({
     secret: `${secret}`,
-    cookie: {},
+    cookie: {
+        httpOnly: true,
+        sameSite: true,
+    },
     resave: false,
     saveUninitialized: false
   })
