@@ -18,6 +18,16 @@ app.use(
   })
 )
 
+app.post("/sensitive", (req, res) => {
+  if (req.session.user === 'Admin') {
+    req.session.sensitive = 'supersecret';
+    res.send({message: 'Operation successful'});
+  }
+  else {
+    res.send({message: 'Unauthorized Access'});
+  }
+})
+
 app.get("/", (req, res) => {
   let name = "Guest"
 

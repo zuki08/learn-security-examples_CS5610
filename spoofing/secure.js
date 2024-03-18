@@ -1,17 +1,32 @@
 const express = require("express")
 const session = require("express-session")
 
-const app = express();
+const app = express()
+// Enter session secret key as an argument
+const secret = process.argv[2];
 app.use(express.urlencoded({ extended: false }))
 
 app.use(
   session({
-    secret: "SOMESECRET",
-    cookie: {},
+    secret: `${secret}`,
+    cookie: {
+        httpOnly: true,
+        sameSite: true,
+    },
     resave: false,
     saveUninitialized: false
   })
 )
+
+app.post("/sensitive", (req, res) => {
+  if (req.session.user === 'Admin') {
+    req.session.sensitive = 'supersecret';
+    res.send({message: 'Operation successful'});
+  }
+  else {
+    res.send({message: 'Unauthorized Access'});
+  }
+})
 
 app.get("/", (req, res) => {
   let name = "Guest"
