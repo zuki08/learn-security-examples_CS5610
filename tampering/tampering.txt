@@ -1,0 +1,9 @@
+Briefly explain the vulnerability and why the secure version prevents the vulnerability.
+
+The vulnerability is using inputs as is not sanitizing it. So what is happening is that the malicious can input scripts that break the code. Such cases can be injecting code into input fields that deter the application from carrying out its original, designed functionality. 
+
+The secure version of the this vulnerability by sanitzing the input by removing any specific characters that might be utilized maliciously. Such as allowing only digits and characters for inputting usernames and just characters for names. Removing and '=, <, >, [0-9], etc'
+
+Which CIA property does tampering violate?
+
+This would violate the Integrity of the data. As this allows information to be tampered with and altered with just some formatted input is it is not handled correctly. In the example code that was ran, it was merely a script that changed the frontend. If it contained more malicious JS code, then the data is not going to remain unchanged, as it will be altered and/or corrupted due to potential unauthorized access.

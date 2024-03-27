@@ -1,3 +1,13 @@
 Briefly explain the vulnerability and why the secure version prevents the vulnerability.
+
+The vulnerability in this code lies in the route handling user authentication. The insecure code takes what is given as the input and shoves it directly into the the database query. Since the input is not sanitized, it leaves the database to be open to Database Injection attacks. Where data can bee maliciously altered without authorized access and will potentially cause data leakage as in the example of http://localhost:3000/userInfo?[$ne]= 
+
+In the secure version, input validation is used to mitigate the risk of injection attacks. Input validation involves checking user input for malicious or unexpected characters. This minimizes the risk of injection attacks by handling potentially rouge characters and removing them through sanitization. 
+
 Which CIA property does tampering violate?
+
+This would violate the Integrity of the data. As this allows information to be tampered with and altered with just some formatted input is it is not handled correctly. In the example code that was ran, it was merely a script that changed the frontend. If it contained more malicious JS code, then the data is not going to remain unchanged, as it will be altered and/or corrupted due to potential unauthorized access.
+
 What additional security mechanisms can you incorporate?
+
+There are a couple that come to mind. With the most prominent one being password hashing. Creating groups and roles-based access control, input validation and sanitization are some others that help mitigate injection attacks. Frequently updating dependencies and software with the newest security patches is another way to make sure vulnerabilties on the software side are patched. Monitoring and logging activity is also an option. Can help identify a malicious pattern before it fully develops. Using firewalls and network security, i.e. iptables for internal use can also help in boosting the overall security of the application.

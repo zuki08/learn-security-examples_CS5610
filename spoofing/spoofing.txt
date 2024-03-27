@@ -1,1 +1,9 @@
 Briefly explain the vulnerability and why the secure version prevents the vulnerability.
+
+The vulnerability lies in that the insecure version allows the cookie to be accessible via the document.cookie API. Thus is can be leaked. This will allow the malicious to obtain the cookie and impersonate the person through getting the cookie.
+
+This vulnerability is prevented in the secure version through setting the appropriate cookie flags. The httpOnly will keep the session cookie inaccessible from the client. Furthermore, it now has a sameSite flag. This flag will limit the cookie stored on the user's browser to only send the cookie when it can confirm the request is being made from the site where the cookie originated from. In essence preventing CSRF by limiting the transport of the cookie over the network, which may fall victim to MITM attacks.
+
+Which CIA properties do you think Spoofing violates?
+
+Spoofing will violate all of the CIA properties. This is due to spoofing allows access to sensitive information that is unauthorized otherwise through impersonating another individual via session hijacking; this unauthorized access can then lead to undesirable results relating financially and intellectually. Furthermore, spoofing will violate the integrity of to information. This unauthorized access will also enable malicious individuals to tamper with and manipulate the information; this will lead to false information and can also have severe consequences, including but not limited to financial losses. Lastly, spoofing will undermine the Availablity of the information. With the unauthorized access, the malicious can also delete in addition to tampering with and manipulating the authenticity of the information. Based on all of these, I think spoofing does violate all of the CIA principles to some extent
