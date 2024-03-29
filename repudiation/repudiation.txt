@@ -1,2 +1,9 @@
 - Briefly explain the vulnerability and why the secure version is better at preventing repudiation than the insecure version.
+
+No way of tracking incoming request source. No way of knowing if this is the person sending the information.
+
+Server logging -> (Date, Method, Userid, ip) is used in the secure version.
+
 - What additional security mechanisms can you incorporate to prevent such attacks?
+
+Read only log for others.

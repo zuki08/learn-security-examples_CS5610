@@ -1,2 +1,10 @@
 - Briefly explain the vulnerability and why the secure version prevents the vulnerability.
+
+ID is not sanitized and checked. So when it tries to go search the database for a document with rouge input. It breaks the server as it doesn't find the document, and an error is thrown that is not caught.
+
+The Secure version prevents this by catching the error thrown by Mongooose and handlng it with a log of bad input.
+
 - What additional security mechanisms can you incorporate to prevent such attacks?
+
+Add rate limiting.
+Add authentication so the the connection is not processed if not authorized.

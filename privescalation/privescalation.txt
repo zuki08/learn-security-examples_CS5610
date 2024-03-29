@@ -1,0 +1,11 @@
+Vulnerability: 
+    - There is no valid session.
+    - So any user can be updated in any way as long as the body matches the role without valid authentication.
+    - Defined as user is in admin privledges.
+
+    - Session is used in the secure version.
+
+Additional mechanisms:
+    - Secure the session more
+    - Adding password.
+    - Cookie httpOnly and sameSite.
